@@ -7,6 +7,22 @@ use Illuminate\Http\Request;
 
 class TankController extends Controller
 {
+
+    public function index()
+    {
+        $tankLevel = Tank::all();
+
+        if ($tankLevel) {
+            $response = $tankLevel;
+        } else {
+            $response = [
+                'status' => false,
+                'message' => 'Something went wrong',
+            ];
+        }
+        return response($response, 200);
+    }
+
     public function store(Request $request)
     {
         $input = $request->all();
