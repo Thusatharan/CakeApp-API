@@ -63,4 +63,13 @@ class TankController extends Controller
 
         return response($response, 201);
     }
+
+    public function getSingle()
+    {
+        $singleRow = Tank::find(1);
+
+        $response = $singleRow;
+
+        return response($response, 200);
+    }
 }
