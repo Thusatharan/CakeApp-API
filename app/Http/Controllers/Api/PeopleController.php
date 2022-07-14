@@ -4,9 +4,9 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Category;
+use App\Models\People;
 
-class CategoryController extends Controller
+class PeopleController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,19 +15,17 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::all();
+        $peoples = People::all();
 
-        if($categories != null) {
+        if($peoples) {
             $response = [
                 'status'=>true,
-                'data' =>[
-                    'categories'=>$categories,
-                ]
+                'data' => $peoples
             ];
             } else {
                 $response = [
                     'status'=>false,
-                    'message'=>'Something went wront',
+                    'message'=>'Something went wrong',
                 ];
             }
             return response($response, 200);
@@ -51,23 +49,14 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-            $input = $request->all();
+        $input = $request->all();
+        $people = People::create($input);
 
-            if ($request->hasFile('image')) {
-                $filename = $request->image->getClientOriginalName();
-                $image_path = $request->image->storeAs('apiCategory', $filename, 'public');
-
-                $input['image'] = $image_path;
-            }
-
-            $category = Category::create($input);
-            if($category) {
+        if($people) {
             $response = [
                 'status'=>true,
-                'message'=>'Category Added Successfully',
-                'data' =>[
-                    'category'=>$category,
-                ]
+                'message'=>'Person Added Successfully',
+                'data' => $people
             ];
             } else {
                 $response = [

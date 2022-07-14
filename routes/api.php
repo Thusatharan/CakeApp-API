@@ -5,6 +5,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\ProductController;
+use App\Http\Controllers\Api\PeopleController;
+use App\Http\Controllers\Api\ImageController;
+use App\Http\Controllers\TankController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,14 +21,17 @@ use App\Http\Controllers\Api\ProductController;
 */
 
 //Authentication Routes
-Route::post("register",[AuthController::class,'register']);
-Route::post("login",[AuthController::class,'login']);
+Route::post("register", [AuthController::class, 'register']);
+Route::post("login", [AuthController::class, 'login']);
+
+Route::post('tanklevel', [TankController::class, 'store']);
 
 // Public Routes
-Route::resource("category",CategoryController::class);
-Route::resource("product",ProductController::class);
+Route::resource("category", CategoryController::class);
+Route::resource("product", ProductController::class);
+Route::resource("peoples", PeopleController::class);
+Route::post("stress", [ImageController::class, 'storeData']);
 
 // Requires Authentication
 Route::middleware('auth:sanctum')->group(function () {
-
 });
