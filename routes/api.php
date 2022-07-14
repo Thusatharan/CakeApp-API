@@ -25,6 +25,7 @@ Route::post("register", [AuthController::class, 'register']);
 Route::post("login", [AuthController::class, 'login']);
 
 Route::post('tanklevel', [TankController::class, 'store']);
+Route::post('updatelevel', [TankController::class, 'update']);
 Route::get('getTankLevel', [TankController::class, 'index']);
 
 // Public Routes

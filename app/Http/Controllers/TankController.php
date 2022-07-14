@@ -45,4 +45,22 @@ class TankController extends Controller
         }
         return response($response, 201);
     }
+
+
+    public function update(Request $request)
+    {
+        $singleRow = Tank::find(1);
+
+        $data = $singleRow->update([
+            'distance' => $request->distance
+        ]);
+
+        $response = [
+            'status' => true,
+            'message' => 'Updated Successfully',
+            'data' => $data
+        ];
+
+        return response($response, 201);
+    }
 }
