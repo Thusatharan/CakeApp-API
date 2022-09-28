@@ -7,6 +7,9 @@ use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\ProductController;
 use App\Http\Controllers\Api\PeopleController;
 use App\Http\Controllers\Api\ImageController;
+use App\Http\Controllers\JavaquizController;
+use App\Http\Controllers\PhpquizController;
+use App\Http\Controllers\PythonquizController;
 use App\Http\Controllers\TankController;
 
 /*
@@ -34,6 +37,12 @@ Route::resource("category", CategoryController::class);
 Route::resource("product", ProductController::class);
 Route::resource("peoples", PeopleController::class);
 Route::post("stress", [ImageController::class, 'storeData']);
+
+//Quiz
+
+Route::resource("pythonquiz", PythonquizController::class);
+Route::resource("javaquiz", JavaquizController::class);
+Route::resource("phpquiz", PhpquizController::class);
 
 // Requires Authentication
 Route::middleware('auth:sanctum')->group(function () {
