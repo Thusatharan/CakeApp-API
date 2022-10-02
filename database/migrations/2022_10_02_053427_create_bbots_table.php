@@ -20,8 +20,8 @@ class CreateBbotsTable extends Migration
             $table->string('bin_longitude');
             $table->string('bin_latitude');
             $table->string('bin_level');
-            $table->boolean('is_gas');
-            $table->timestamps('');
+            $table->boolean('is_gas')->default(0);
+            $table->timestamps();
         });
     }
 
