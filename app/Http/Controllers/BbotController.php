@@ -106,7 +106,7 @@ class BbotController extends Controller
      * @param  \App\Models\Bbot  $bbot
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Bbot $bbot)
+    public function deleteAll()
     {
         Bbot::truncate();
 
