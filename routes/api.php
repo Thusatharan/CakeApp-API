@@ -46,7 +46,7 @@ Route::resource("javaquiz", JavaquizController::class);
 Route::resource("phpquiz", PhpquizController::class);
 
 Route::resource("bbot", BbotController::class);
-Route::post('deleteAll', BbotController::class, 'deleteAll');
+// Route::post('deleteAll', BbotController::class, 'deleteAll');
 
 // Requires Authentication
 Route::middleware('auth:sanctum')->group(function () {

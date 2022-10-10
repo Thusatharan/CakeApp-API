@@ -106,14 +106,8 @@ class BbotController extends Controller
      * @param  \App\Models\Bbot  $bbot
      * @return \Illuminate\Http\Response
      */
-    public function deleteAll()
+    public function destroy(Bbot $bbot)
     {
-        Bbot::truncate();
-
-        $response = [
-            'status' => true,
-            'message' => 'Records Cleared Successfully',
-        ];
-        return response($response, 201);
+        //
     }
 }
