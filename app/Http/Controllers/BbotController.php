@@ -108,6 +108,12 @@ class BbotController extends Controller
      */
     public function destroy(Bbot $bbot)
     {
-        //
+        Bbot::truncate();
+
+        $response = [
+            'status' => true,
+            'message' => 'Records Cleared Successfully',
+        ];
+        return response($response, 201);
     }
 }
