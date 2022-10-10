@@ -3,14 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\Bbot;
+use DB;
 use Illuminate\Http\Request;
 
 class BbotDeleteController extends Controller
 {
     public function deleteAll()
     {
-        Bbot::truncate();
-
+        DB::table('bbots')->delete();
         $response = [
             'status' => true,
             'message' => 'Records Cleared Successfully',
