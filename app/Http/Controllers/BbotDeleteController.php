@@ -34,6 +34,6 @@ class BbotDeleteController extends Controller
                 'message' => 'Something went wront',
             ];
         }
-        return response($response, .200);
+        return response($response, 200);
     }
 }
