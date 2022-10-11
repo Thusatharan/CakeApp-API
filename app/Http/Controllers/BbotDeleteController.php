@@ -17,4 +17,23 @@ class BbotDeleteController extends Controller
         ];
         return response($response, 201);
     }
+
+    public function getLatest()
+    {
+        $latest = Bbot::latest()->first();
+
+        if ($latest) {
+            $response = [
+                'status' => true,
+                'message' => 'Latest Record',
+                'data' => $latest
+            ];
+        } else {
+            $response = [
+                'status' => false,
+                'message' => 'Something went wront',
+            ];
+        }
+        return response($response, .200);
+    }
 }
