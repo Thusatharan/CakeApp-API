@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Bbot;
+use App\Models\Classification;
 use Illuminate\Http\Request;
 
 class BbotController extends Controller
@@ -50,6 +51,19 @@ class BbotController extends Controller
     {
         $input = $request->all();
         $createRecord = Bbot::create($input);
+
+        if ($input['object'] == 'Laptop' || $input['object'] == 'Bottle' || $input['object'] == 'Pen') {
+            Classification::create([
+                'product' => $input['object'],
+                'plastic' => 1,
+            ]);
+        } else {
+            Classification::create([
+                'product' => $input['object'],
+                'non_plastic' => 1,
+            ]);
+        }
+
 
         if ($createRecord) {
             $response = [

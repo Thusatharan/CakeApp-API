@@ -9,6 +9,7 @@ use App\Http\Controllers\Api\PeopleController;
 use App\Http\Controllers\Api\ImageController;
 use App\Http\Controllers\BbotController;
 use App\Http\Controllers\BbotDeleteController;
+use App\Http\Controllers\ClassificationController;
 use App\Http\Controllers\JavaquizController;
 use App\Http\Controllers\PhpquizController;
 use App\Http\Controllers\PythonquizController;
@@ -49,6 +50,8 @@ Route::resource("phpquiz", PhpquizController::class);
 Route::resource("bbot", BbotController::class);
 Route::post('deleteAll', [BbotDeleteController::class, 'deleteAll']);
 Route::get('getLatest', [BbotDeleteController::class, 'getLatest']);
+
+Route::get('getClassifications', [ClassificationController::class, 'index']);
 
 // Requires Authentication
 Route::middleware('auth:sanctum')->group(function () {
